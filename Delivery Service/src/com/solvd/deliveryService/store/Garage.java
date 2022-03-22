@@ -1,4 +1,4 @@
-package com.solvd.deliveryService;
+package com.solvd.deliveryService.store;
 
 import com.solvd.deliveryService.vehicles.Vehicle;
 

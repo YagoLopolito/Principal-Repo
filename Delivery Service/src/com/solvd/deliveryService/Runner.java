@@ -1,7 +1,9 @@
 package com.solvd.deliveryService;
-import com.solvd.deliveryService.Order;
 import com.solvd.deliveryService.people.Client;
 import com.solvd.deliveryService.people.Employee;
+import com.solvd.deliveryService.store.Central;
+import com.solvd.deliveryService.store.Garage;
+import com.solvd.deliveryService.store.Order;
 
 import java.util.Scanner;
 

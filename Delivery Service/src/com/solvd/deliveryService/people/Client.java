@@ -1,6 +1,6 @@
 package com.solvd.deliveryService.people;
 
-import com.solvd.deliveryService.Order;
+import com.solvd.deliveryService.store.Order;
 import com.solvd.deliveryService.interfaces.Pay;
 
 public class Client extends Person implements Pay {
