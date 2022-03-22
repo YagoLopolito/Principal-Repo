@@ -1,8 +1,9 @@
 package com.solvd.deliveryService.people;
 
 import com.solvd.deliveryService.Order;
+import com.solvd.deliveryService.interfaces.Pay;
 
-public class Client extends Person {
+public class Client extends Person implements Pay {
     private Order order;
 
     public Client(int age, String sex, int document, String name, Order order) {
@@ -31,6 +32,11 @@ public class Client extends Person {
     public String toString() {
         return "Order: " + order +
                 super.toString() + "\n";
+    }
+
+    @Override
+    public void pay() {
+
     }
 }
 
