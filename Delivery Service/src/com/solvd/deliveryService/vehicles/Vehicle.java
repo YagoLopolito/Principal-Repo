@@ -1,4 +1,10 @@
-public abstract class Vehicle {
+package com.solvd.deliveryService.vehicles;
+
+import com.solvd.deliveryService.interfaces.Lights;
+import com.solvd.deliveryService.interfaces.Wheels;
+import com.solvd.deliveryService.interfaces.Windows;
+
+public abstract class Vehicle implements Wheels, Lights, Windows {
     private int id;
     private String brand;
     private String model;
@@ -70,12 +76,12 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return " Vehicle: " +
+        return " Vehicle, " +
                 "Id n°: " + id +
                 ", Brand: " + brand +
                 ", Model: " + model +
                 ", N° of wheels: " + wheels +
-                ", Capacity: " + capacity + " people"+
+                ", Capacity: " + capacity + " people" +
                 ", Capability: " + capability + " kg" + "\n";
 
     }

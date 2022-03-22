@@ -1,10 +1,14 @@
+package com.solvd.deliveryService;
+
+import com.solvd.deliveryService.vehicles.Vehicle;
+
 import java.util.ArrayList;
 
 public class Garage {
     private ArrayList<Vehicle> parkedVehicles;
 
     public Garage() {
-        this.parkedVehicles=new ArrayList<Vehicle>();
+        this.parkedVehicles = new ArrayList<Vehicle>();
     }
 
     public ArrayList<Vehicle> getParkedVehicles() {

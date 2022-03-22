@@ -1,3 +1,5 @@
+package com.solvd.deliveryService.vehicles;
+
 public class Train extends Vehicle {
     private boolean hasWagon;
     private boolean hasPassangers;
@@ -29,9 +31,54 @@ public class Train extends Vehicle {
 
     @Override
     public String toString() {
-        return "Train: " +
+        return "The train " +
                 "Has Wagon: " + hasWagon +
                 ", Has Passangers: " + hasPassangers +
-                  super.toString() + "\n";
+                super.toString() + "\n";
+    }
+
+    @Override
+    public void moveForward() {
+
+    }
+
+    @Override
+    public void brake() {
+
+    }
+
+    @Override
+    public void turnOn() {
+
+    }
+
+    @Override
+    public void turnOff() {
+
+    }
+
+    @Override
+    public void lowBeamsHeadlights() {
+
+    }
+
+    @Override
+    public void highBeamsHeadlights() {
+
+    }
+
+    @Override
+    public void positionLights() {
+
+    }
+
+    @Override
+    public void rollUp() {
+
+    }
+
+    @Override
+    public void rollDown() {
+
     }
 }

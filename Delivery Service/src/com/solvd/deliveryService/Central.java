@@ -1,9 +1,14 @@
+package com.solvd.deliveryService;
+
+import com.solvd.deliveryService.people.Driver;
+import com.solvd.deliveryService.vehicles.*;
+
 import java.util.ArrayList;
 
 public class Central {
     private Garage garage;
-    private String country = "Belarus";
-    private String city = "Shklow";
+    private String country;
+    private String city;
     private ArrayList<Driver> driverList;
     private ArrayList<Vehicle> vehicleList;
     private ArrayList<Order> transportsList;
@@ -89,7 +94,7 @@ public class Central {
 
     @Override
     public String toString() {
-        return "Vehicle in the central" +
+        return "Vehicle in the central, " +
                 "Parked in the: " + garage +
                 ", Driver List: " + driverList +
                 ", Vehicle List: " + vehicleList +

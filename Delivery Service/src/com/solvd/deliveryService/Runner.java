@@ -1,3 +1,8 @@
+package com.solvd.deliveryService;
+import com.solvd.deliveryService.Order;
+import com.solvd.deliveryService.people.Client;
+import com.solvd.deliveryService.people.Employee;
+
 import java.util.Scanner;
 
 public class Runner {
@@ -5,6 +10,7 @@ public class Runner {
         Garage garage = new Garage();
         Order order = new Order();
         Client client = new Client(20, "M", 43583051, "Yago Lopolito", order);
+        Employee employee = new Employee(25, "M", 41264879, "Pablo Perez", 500, 001);
 
 
         Central central = new Central();

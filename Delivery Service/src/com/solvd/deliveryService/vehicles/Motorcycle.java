@@ -1,3 +1,5 @@
+package com.solvd.deliveryService.vehicles;
+
 public class Motorcycle extends Vehicle {
     private boolean hasSidecar;
 
@@ -19,8 +21,53 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public String toString() {
-        return "Motorcycle: " +
+        return "Motorcycle " +
                 "Has Sidecar: " + hasSidecar +
-                  super.toString() + "\n";
+                super.toString() + "\n";
+    }
+
+    @Override
+    public void moveForward() {
+
+    }
+
+    @Override
+    public void brake() {
+
+    }
+
+    @Override
+    public void turnOn() {
+
+    }
+
+    @Override
+    public void turnOff() {
+
+    }
+
+    @Override
+    public void lowBeamsHeadlights() {
+
+    }
+
+    @Override
+    public void highBeamsHeadlights() {
+
+    }
+
+    @Override
+    public void positionLights() {
+
+    }
+
+    @Override
+    public void rollUp() {
+
+    }
+
+    @Override
+    public void rollDown() {
+
     }
 }

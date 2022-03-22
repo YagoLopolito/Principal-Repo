@@ -1,3 +1,7 @@
+package com.solvd.deliveryService;
+
+import com.solvd.deliveryService.vehicles.Vehicle;
+
 public class Order {
     private final double PRICE_PER_KM = 0.2;
     private double distance;
@@ -55,9 +59,9 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order: " +
+        return
                 "Price per kilometer: $" + PRICE_PER_KM +
-                ", Distance: " + distance +
+                ", Distance: " + distance + " Km" +
                 ", Assigned vehicle: " + assignedVehicle + "\n"
                 ;
     }

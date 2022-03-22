@@ -1,8 +1,10 @@
-public class TrainDriver extends Person {
+package com.solvd.deliveryService.people;
+
+public class TrainDriver extends Employee {
     private boolean hasTrainLicense;
 
-    public TrainDriver(int age, String sex, int document, String name, boolean hasTrainLicense) {
-        super(age, sex, document, name);
+    public TrainDriver(int age, String sex, int document, String name, boolean hasTrainLicense, double wage, int employeeId) {
+        super(age, sex, document, name, wage, employeeId);
         this.hasTrainLicense = hasTrainLicense;
     }
 
@@ -16,9 +18,10 @@ public class TrainDriver extends Person {
 
     @Override
     public String toString() {
-        return "TrainDriver: " +
+        return "The train driver " +
                 "Has train license: " + hasTrainLicense +
-                 super.toString() + "\n";
+
+                super.toString() + "\n";
     }
 }
 

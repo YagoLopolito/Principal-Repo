@@ -1,3 +1,5 @@
+package com.solvd.deliveryService.vehicles;
+
 public class Pickup extends Vehicle {
     private boolean hasTruckBed;
 
@@ -19,9 +21,54 @@ public class Pickup extends Vehicle {
 
     @Override
     public String toString() {
-        return "Pickup: " +
+        return "Pickup " +
                 "Has truck bed: " + hasTruckBed +
                 super.toString() + "\n";
+    }
+
+    @Override
+    public void moveForward() {
+
+    }
+
+    @Override
+    public void brake() {
+
+    }
+
+    @Override
+    public void turnOn() {
+
+    }
+
+    @Override
+    public void turnOff() {
+
+    }
+
+    @Override
+    public void lowBeamsHeadlights() {
+
+    }
+
+    @Override
+    public void highBeamsHeadlights() {
+
+    }
+
+    @Override
+    public void positionLights() {
+
+    }
+
+    @Override
+    public void rollUp() {
+
+    }
+
+    @Override
+    public void rollDown() {
+
     }
 }
 

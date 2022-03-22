@@ -1,3 +1,5 @@
+package com.solvd.deliveryService.people;
+
 public abstract class Person {
     private int age;
     private String sex;
@@ -50,6 +52,6 @@ public abstract class Person {
                         ", Sex: " + sex +
                         ", Document n°: " + id +
                         ", Name: " + name + "\n"
-                        ;
+                ;
     }
 }

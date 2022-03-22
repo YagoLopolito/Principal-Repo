@@ -1,3 +1,7 @@
+package com.solvd.deliveryService.people;
+
+import com.solvd.deliveryService.Order;
+
 public class Client extends Person {
     private Order order;
 
@@ -5,6 +9,7 @@ public class Client extends Person {
         super(age, sex, document, name);
         this.order = order;
     }
+
 
     public Order getTransport() {
         return order;
@@ -24,9 +29,8 @@ public class Client extends Person {
 
     @Override
     public String toString() {
-        return "Client: " +
-                "Order: " + order +
-                super.toString()+ "\n";
+        return "Order: " + order +
+                super.toString() + "\n";
     }
 }
 
