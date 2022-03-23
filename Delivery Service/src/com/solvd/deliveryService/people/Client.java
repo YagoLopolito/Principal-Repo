@@ -1,9 +1,9 @@
 package com.solvd.deliveryService.people;
 
+import com.solvd.deliveryService.interfaces.IPay;
 import com.solvd.deliveryService.store.Order;
-import com.solvd.deliveryService.interfaces.Pay;
 
-public class Client extends Person implements Pay {
+public class Client extends Person implements IPay {
     private Order order;
 
     public Client(int age, String sex, int document, String name, Order order) {
@@ -36,7 +36,7 @@ public class Client extends Person implements Pay {
 
     @Override
     public void pay() {
-
+        System.out.println("I pay: ");
     }
 }
 

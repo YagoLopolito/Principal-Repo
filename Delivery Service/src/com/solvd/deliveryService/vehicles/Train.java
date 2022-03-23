@@ -31,7 +31,7 @@ public class Train extends Vehicle {
 
     @Override
     public String toString() {
-        return "The train " +
+        return "-The train " +
                 "Has Wagon: " + hasWagon +
                 ", Has Passangers: " + hasPassangers +
                 super.toString() + "\n";

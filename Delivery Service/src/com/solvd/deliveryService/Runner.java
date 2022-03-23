@@ -1,4 +1,5 @@
 package com.solvd.deliveryService;
+
 import com.solvd.deliveryService.people.Client;
 import com.solvd.deliveryService.people.Employee;
 import com.solvd.deliveryService.store.Central;
@@ -12,35 +13,64 @@ public class Runner {
         Garage garage = new Garage();
         Order order = new Order();
         Client client = new Client(20, "M", 43583051, "Yago Lopolito", order);
-        Employee employee = new Employee(25, "M", 41264879, "Pablo Perez", 500, 001);
-
+        Employee employee = new Employee(25, "M", 41264879, "Juan Roman Riquelme", 2000, 001, "Boss");
+        Employee employee2 = new Employee(23, "M", 42164479, "Martin Palermo", 1500, 002, "Manager");
 
         Central central = new Central();
+        central.createNewDriver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
+        central.createNewDriver(54, "M", 30569847, "Hugo Moyano", true, 1500, 2, "Truck Driver");
         central.setGarage(garage);
 
-        central.createNewMotorcycle(1001, "Mercedes Benz", "Chipre", 3, 2, true, 3);
-        central.createNewPickup(001, "Ford", "Carlx", 4, 5, 100, true);
-        central.createNewSUV(002, "Honda", "Kizx", 4, 5, 80);
-        central.createNewTruck(003, "Volvo", "Liga Argentina", true, 8, 2, 1000);
+
+        central.createNewMotorcycle(1, "Mercedes Benz", "Chipre", 3, 2, true, 3);
+        central.createNewSUV(2, "Honda", "Kizx", 4, 5, 80);
+        central.createNewPickup(3, "Ford", "Carlx", 4, 5, 100, true);
+        central.createNewTruck(4, "Volvo", "Liga Argentina", true, 8, 2, 1000);
+
 
         Scanner scanner = new Scanner(System.in);
 
 
         System.out.println("Enter the package weight in kg: ");
 
-
+        boolean pass = false;
         int packageWeight = scanner.nextInt();
+
+        while (pass == false) {
+
+            if (packageWeight <= 3 && packageWeight > 0) {
+
+                System.out.println("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + garage.getParkedVehicles().get(0));
+                pass = true;
+            } else if (packageWeight >= 3 && packageWeight <= 80) {
+
+                System.out.println("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + garage.getParkedVehicles().get(1));
+                pass = true;
+            } else if (packageWeight >= 80 && packageWeight <= 100) {
+                System.out.println("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + garage.getParkedVehicles().get(2));
+                pass = true;
+            } else if (packageWeight >= 100 && packageWeight <= 1000) {
+                System.out.println("Your delivery will be handled by " + central.getDriverList().get(1).getName() + " and he will be riding a " + garage.getParkedVehicles().get(3));
+
+            }
+            else{
+                System.out.println("We do not have a capable vehicle");
+                pass=false;
+            }
+        }
+
 
         System.out.println("Enter the distance to destination in km: ");
         Scanner scanner2 = new Scanner(System.in);
         order.setDistance(scanner2.nextDouble());
 
 
-        System.out.println("The price is: $" + order.calculateCost(packageWeight));
-        System.out.println(central.getGarage().toString());
+        System.out.println("The price is: $" + order.calculateCost(packageWeight) + "\n");
+        System.out.println(central.getGarage().toString() + "\n");
 
         //System.out.println(transport.calculateCost(250, 200));
         //System.out.println(central.getVehicleList().get(0).toString());
+
     }
 }
 

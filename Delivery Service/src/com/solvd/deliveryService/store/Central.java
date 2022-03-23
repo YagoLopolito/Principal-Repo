@@ -20,6 +20,12 @@ public class Central {
         this.garage = new Garage();
     }
 
+    public void createNewDriver(int age, String sex, int document, String name, boolean hasTruckLicense, double wage, int employeeId, String position) {
+        Driver driver = new Driver(age, sex, document, name, hasTruckLicense, wage, employeeId, position);
+        this.driverList.add(driver);
+
+    }
+
     public void createNewMotorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability) {
         Motorcycle motorcycle = new Motorcycle(id, brand, model, wheels, capacity, hasSidecar, capability);
         this.vehicleList.add(motorcycle);
@@ -42,6 +48,20 @@ public class Central {
         Truck truck = new Truck(id, brand, model, hasTrailer, wheels, capacity, capability);
         this.vehicleList.add(truck);
         this.garage.getParkedVehicles().add(truck);
+    }
+
+    public double getCapabilityById(int id) {
+        int i = 0;
+        double capability = 0;
+        while (vehicleList.get(i).getId() != id) {
+            if (vehicleList.get(i).getId() == id) {
+                capability = vehicleList.get(i).getCapability();
+            } else {
+                i++;
+            }
+        }
+
+        return capability;
     }
 
     public String getCountry() {

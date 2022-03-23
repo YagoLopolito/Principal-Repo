@@ -10,7 +10,6 @@ public abstract class Vehicle implements Wheels, Lights, Windows {
     private String model;
     private int wheels;
     private int capacity;
-    //private double price;
     private double capability;
 
     public Vehicle() {
@@ -76,13 +75,13 @@ public abstract class Vehicle implements Wheels, Lights, Windows {
 
     @Override
     public String toString() {
-        return " Vehicle, " +
-                "Id n°: " + id +
-                ", Brand: " + brand +
-                ", Model: " + model +
-                ", N° of wheels: " + wheels +
-                ", Capacity: " + capacity + " people" +
-                ", Capability: " + capability + " kg" + "\n";
+        return
+                "id n°: " + id +
+                        ", Brand: " + brand +
+                        ", Model: " + model +
+                        ", N° of wheels: " + wheels +
+                        ", Capacity: " + capacity + " people" +
+                        ", Capability: " + capability + " kg" + "\n";
 
     }
 }

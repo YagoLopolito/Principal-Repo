@@ -21,9 +21,9 @@ public class Pickup extends Vehicle {
 
     @Override
     public String toString() {
-        return "Pickup " +
-                "Has truck bed: " + hasTruckBed +
-                super.toString() + "\n";
+        return "-Pickup " + super.toString() + ", Has truck bed: " + hasTruckBed +
+                "\n" + "\n";
+
     }
 
     @Override

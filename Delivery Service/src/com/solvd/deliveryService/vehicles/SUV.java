@@ -10,7 +10,7 @@ public class SUV extends Vehicle {
 
     @Override
     public String toString() {
-        return "SUV " + super.toString() + "\n";
+        return "-SUV " + super.toString() + "\n";
     }
 
     @Override

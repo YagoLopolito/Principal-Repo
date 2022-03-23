@@ -1,5 +1,5 @@
 package com.solvd.deliveryService.interfaces;
 
-public interface Pay {
+public interface IPay {
     public void pay();
 }

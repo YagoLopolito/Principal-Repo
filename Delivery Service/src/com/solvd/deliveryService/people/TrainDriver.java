@@ -3,8 +3,8 @@ package com.solvd.deliveryService.people;
 public class TrainDriver extends Employee {
     private boolean hasTrainLicense;
 
-    public TrainDriver(int age, String sex, int document, String name, boolean hasTrainLicense, double wage, int employeeId) {
-        super(age, sex, document, name, wage, employeeId);
+    public TrainDriver(int age, String sex, int document, String name, boolean hasTrainLicense, double wage, int employeeId, String position) {
+        super(age, sex, document, name, wage, employeeId, position);
         this.hasTrainLicense = hasTrainLicense;
     }
 

@@ -21,9 +21,10 @@ public class Motorcycle extends Vehicle {
 
     @Override
     public String toString() {
-        return "Motorcycle " +
+        return "\n" + "-Motorcycle " +
+                super.toString() +
                 "Has Sidecar: " + hasSidecar +
-                super.toString() + "\n";
+                "\n";
     }
 
     @Override

@@ -6,6 +6,7 @@ public class Order {
     private final double PRICE_PER_KM = 0.2;
     private double distance;
     private Vehicle assignedVehicle;
+
     public Order() {
     }
 
@@ -61,8 +62,8 @@ public class Order {
     public String toString() {
         return
                 "Price per kilometer: $" + PRICE_PER_KM +
-                ", Distance: " + distance + " Km" +
-                ", Assigned vehicle: " + assignedVehicle + "\n"
+                        ", Distance: " + distance + " Km" +
+                        ", Assigned vehicle: " + assignedVehicle + "\n"
                 ;
     }
 }

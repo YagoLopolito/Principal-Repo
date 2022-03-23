@@ -5,14 +5,16 @@ import com.solvd.deliveryService.interfaces.Bonus;
 public class Employee extends Person implements Bonus {
     private double wage;
     private int employeeId;
+    private String position;
 
     public Employee(int age, String sex, int document, String name) {
         super(age, sex, document, name);
     }
 
-    public Employee(int age, String sex, int document, String name, double wage, int employeeId) {
+    public Employee(int age, String sex, int document, String name, double wage, int employeeId, String position) {
         super(age, sex, document, name);
         this.wage = wage;
+        this.position = position;
         this.employeeId = employeeId;
     }
 
@@ -34,7 +36,7 @@ public class Employee extends Person implements Bonus {
 
     @Override
     public String toString() {
-        return "Employee " + "ID: "+ employeeId +
+        return "Employee " + "ID: " + employeeId +
                 " Wage: $" + wage +
                 super.toString();
     }
