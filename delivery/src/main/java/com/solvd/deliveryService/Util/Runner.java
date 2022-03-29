@@ -1,5 +1,6 @@
-package com.solvd.deliveryService;
+package com.solvd.deliveryService.Util;
 
+import com.solvd.deliveryService.Exceptions.VehicleNotFoundException;
 import com.solvd.deliveryService.people.Client;
 import com.solvd.deliveryService.people.Employee;
 import com.solvd.deliveryService.store.Central;
@@ -19,6 +20,7 @@ public class Runner {
         Central central = new Central();
         central.createNewDriver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
         central.createNewDriver(54, "M", 30569847, "Hugo Moyano", true, 1500, 2, "Truck Driver");
+        central.createNewTrainDriver(69, "F", 25693298, "Elsa Carrio", true, 2000, 3, "Train Driver");
         central.setGarage(garage);
 
 
@@ -26,6 +28,7 @@ public class Runner {
         central.createNewSUV(2, "Honda", "Kizx", 4, 5, 80);
         central.createNewPickup(3, "Ford", "Carlx", 4, 5, 100, true);
         central.createNewTruck(4, "Volvo", "Liga Argentina", true, 8, 2, 1000);
+        central.createNewTrain(5, "Horse", "Bala", 80, 1000, 100000, true, false);
 
 
         Scanner scanner = new Scanner(System.in);
@@ -46,12 +49,15 @@ public class Runner {
 
                 System.out.println("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + garage.getParkedVehicles().get(1));
                 pass = true;
-            } else if (packageWeight >= 80 && packageWeight <= 100) {
+            } else if (packageWeight > 80 && packageWeight <= 100) {
                 System.out.println("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + garage.getParkedVehicles().get(2));
                 pass = true;
-            } else if (packageWeight >= 100 && packageWeight <= 1000) {
+            } else if (packageWeight > 100 && packageWeight <= 1000) {
                 System.out.println("Your delivery will be handled by " + central.getDriverList().get(1).getName() + " and he will be riding a " + garage.getParkedVehicles().get(3));
-
+            }
+            else if(packageWeight >1000 && packageWeight <=100000){
+                System.out.println("Your delivery will be handled by " + central.getTrainDriverList().get(0).getName() + " and he will be riding a " + central.getVehicleList().get(4));
+                pass=true;
             }
             else{
                 System.out.println("We do not have a capable vehicle");
@@ -70,7 +76,7 @@ public class Runner {
 
         //System.out.println(transport.calculateCost(250, 200));
         //System.out.println(central.getVehicleList().get(0).toString());
-
     }
+
 }
 

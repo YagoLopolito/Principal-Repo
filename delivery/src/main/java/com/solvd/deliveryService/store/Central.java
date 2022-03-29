@@ -1,6 +1,7 @@
 package com.solvd.deliveryService.store;
 
 import com.solvd.deliveryService.people.Driver;
+import com.solvd.deliveryService.people.TrainDriver;
 import com.solvd.deliveryService.vehicles.*;
 
 import java.util.ArrayList;
@@ -12,18 +13,29 @@ public class Central {
     private ArrayList<Driver> driverList;
     private ArrayList<Vehicle> vehicleList;
     private ArrayList<Order> transportsList;
+    private ArrayList<TrainDriver> trainDriverList;
 
     public Central() {
         this.driverList = new ArrayList<Driver>();
         this.transportsList = new ArrayList<Order>();
         this.vehicleList = new ArrayList<Vehicle>();
         this.garage = new Garage();
+        this.trainDriverList= new ArrayList<TrainDriver>();
+    }
+    public void createNewTrain(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers){
+        Train train = new Train(id, brand, model, wheels, capacity, capability, hasWagon, hasPassangers);
+        this.vehicleList.add(train);
+        this.garage.getParkedVehicles().add(train);
     }
 
     public void createNewDriver(int age, String sex, int document, String name, boolean hasTruckLicense, double wage, int employeeId, String position) {
         Driver driver = new Driver(age, sex, document, name, hasTruckLicense, wage, employeeId, position);
         this.driverList.add(driver);
 
+    }
+    public void createNewTrainDriver(int age, String sex, int document, String name, boolean hasTrainLicense, double wage, int employeeId, String position){
+        TrainDriver trainDriver= new TrainDriver(age, sex, document, name,hasTrainLicense, wage, employeeId, position);
+        this.trainDriverList.add(trainDriver);
     }
 
     public void createNewMotorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability) {
@@ -48,6 +60,32 @@ public class Central {
         Truck truck = new Truck(id, brand, model, hasTrailer, wheels, capacity, capability);
         this.vehicleList.add(truck);
         this.garage.getParkedVehicles().add(truck);
+    }
+    public Vehicle getVehicle(int id){
+        int i = 0;
+        Vehicle returnedVehicle=null;
+        while (vehicleList.get(i).getId()!=id){
+            if (vehicleList.get(i).getId()== id){
+                returnedVehicle= vehicleList.get(i);
+            }
+            else{
+                i++;
+            }
+        }
+        return returnedVehicle;
+    }
+    public Driver getDriver(int id){
+        int i= 0;
+        Driver returnedDriver=null;
+        while (driverList.get(i).getEmployeeId()!=id){
+            if(vehicleList.get(i).getId()== id){
+                returnedDriver= driverList.get(i);
+            }
+            else{
+                i++;
+            }
+        }
+        return returnedDriver;
     }
 
     public double getCapabilityById(int id) {
@@ -110,6 +148,14 @@ public class Central {
 
     public void setGarage(Garage garage) {
         this.garage = garage;
+    }
+
+    public ArrayList<TrainDriver> getTrainDriverList() {
+        return trainDriverList;
+    }
+
+    public void setTrainDriverList(ArrayList<TrainDriver> trainDriverList) {
+        this.trainDriverList = trainDriverList;
     }
 
     @Override
