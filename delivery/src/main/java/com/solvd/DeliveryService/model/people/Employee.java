@@ -1,8 +1,6 @@
 package com.solvd.DeliveryService.model.people;
 
-import com.solvd.DeliveryService.model.interfaces.Bonus;
-
-public class Employee extends Person implements Bonus {
+public class Employee extends Person {
     private double wage;
     private int employeeId;
     private String position;

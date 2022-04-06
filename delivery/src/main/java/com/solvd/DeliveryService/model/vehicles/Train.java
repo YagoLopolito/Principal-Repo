@@ -7,8 +7,8 @@ public class Train extends Vehicle {
     public Train() {
     }
 
-    public Train(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers) {
-        super(id, brand, model, wheels, capacity, capability);
+    public Train(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers, int speed) {
+        super(id, brand, model, wheels, capacity, capability, speed);
         this.hasWagon = hasWagon;
         this.hasPassangers = hasPassangers;
     }

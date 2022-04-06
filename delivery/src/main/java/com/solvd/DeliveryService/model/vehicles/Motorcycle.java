@@ -6,8 +6,8 @@ public class Motorcycle extends Vehicle {
     public Motorcycle() {
     }
 
-    public Motorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability) {
-        super(id, brand, model, wheels, capacity, capability);
+    public Motorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability, int speed) {
+        super(id, brand, model, wheels, capacity, capability, speed);
         this.hasSidecar = hasSidecar;
     }
 

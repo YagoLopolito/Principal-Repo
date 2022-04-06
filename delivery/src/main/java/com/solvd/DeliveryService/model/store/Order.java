@@ -1,6 +1,6 @@
 package com.solvd.DeliveryService.model.store;
 
-import com.solvd.DeliveryService.model.exceptions.NoCapableVehicleException;
+import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
 import com.solvd.DeliveryService.model.vehicles.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

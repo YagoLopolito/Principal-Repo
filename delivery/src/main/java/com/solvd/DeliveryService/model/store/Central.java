@@ -1,7 +1,7 @@
 package com.solvd.DeliveryService.model.store;
 
-import com.solvd.DeliveryService.model.exceptions.DriverNotFoundException;
-import com.solvd.DeliveryService.model.exceptions.VehicleNotFoundException;
+import com.solvd.DeliveryService.model.exception.DriverNotFoundException;
+import com.solvd.DeliveryService.model.exception.VehicleNotFoundException;
 import com.solvd.DeliveryService.model.people.Driver;
 import com.solvd.DeliveryService.model.people.TrainDriver;
 import com.solvd.DeliveryService.model.vehicles.*;
@@ -26,8 +26,8 @@ public class Central {
         this.trainDriverList = new ArrayList<TrainDriver>();
     }
 
-    public void createNewTrain(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers) {
-        Train train = new Train(id, brand, model, wheels, capacity, capability, hasWagon, hasPassangers);
+    public void createNewTrain(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers, int speed) {
+        Train train = new Train(id, brand, model, wheels, capacity, capability, hasWagon, hasPassangers, speed);
         this.vehicleList.add(train);
         this.garage.getParkedVehicles().add(train);
     }
@@ -43,26 +43,26 @@ public class Central {
         this.trainDriverList.add(trainDriver);
     }
 
-    public void createNewMotorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability) {
-        Motorcycle motorcycle = new Motorcycle(id, brand, model, wheels, capacity, hasSidecar, capability);
+    public void createNewMotorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability, int speed) {
+        Motorcycle motorcycle = new Motorcycle(id, brand, model, wheels, capacity, hasSidecar, capability, speed);
         this.vehicleList.add(motorcycle);
         this.garage.getParkedVehicles().add(motorcycle);
     }
 
-    public void createNewSUV(int id, String brand, String model, int wheels, int capacity, double capability) {
-        SUV suv = new SUV(id, brand, model, wheels, capacity, capability);
+    public void createNewSUV(int id, String brand, String model, int wheels, int capacity, double capability, int speed) {
+        SUV suv = new SUV(id, brand, model, wheels, capacity, capability, speed);
         this.vehicleList.add(suv);
         this.garage.getParkedVehicles().add(suv);
     }
 
-    public void createNewPickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed) {
-        Pickup pickup = new Pickup(id, brand, model, wheels, capacity, capability, hasTruckBed);
+    public void createNewPickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed, int speed) {
+        Pickup pickup = new Pickup(id, brand, model, wheels, capacity, capability, hasTruckBed, speed);
         this.vehicleList.add(pickup);
         this.garage.getParkedVehicles().add(pickup);
     }
 
-    public void createNewTruck(int id, String brand, String model, boolean hasTrailer, int wheels, int capacity, double capability) {
-        Truck truck = new Truck(id, brand, model, hasTrailer, wheels, capacity, capability);
+    public void createNewTruck(int id, String brand, String model, boolean hasTrailer, int wheels, int capacity, double capability, int speed) {
+        Truck truck = new Truck(id, brand, model, hasTrailer, wheels, capacity, capability, speed);
         this.vehicleList.add(truck);
         this.garage.getParkedVehicles().add(truck);
     }

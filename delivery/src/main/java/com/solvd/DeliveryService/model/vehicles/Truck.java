@@ -6,8 +6,8 @@ public class Truck extends Vehicle {
     public Truck() {
     }
 
-    public Truck(int id, String brand, String model, boolean hasTrailer, int wheels, int capacity, double capability) {
-        super(id, brand, model, wheels, capacity, capability);
+    public Truck(int id, String brand, String model, boolean hasTrailer, int wheels, int capacity, double capability, int speed) {
+        super(id, brand, model, wheels, capacity, capability, speed);
         this.hasTrailer = hasTrailer;
     }
 

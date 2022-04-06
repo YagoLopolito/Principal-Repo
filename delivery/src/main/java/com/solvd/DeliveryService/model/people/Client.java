@@ -1,6 +1,6 @@
 package com.solvd.DeliveryService.model.people;
 
-import com.solvd.DeliveryService.model.interfaces.IPay;
+import com.solvd.DeliveryService.model.interface1.IPay;
 import com.solvd.DeliveryService.model.store.Order;
 
 public class Client extends Person implements IPay {

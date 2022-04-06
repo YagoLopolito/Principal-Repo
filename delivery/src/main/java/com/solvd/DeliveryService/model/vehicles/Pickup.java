@@ -6,8 +6,8 @@ public class Pickup extends Vehicle {
     public Pickup() {
     }
 
-    public Pickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed) {
-        super(id, brand, model, wheels, capacity, capability);
+    public Pickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed, int speed) {
+        super(id, brand, model, wheels, capacity, capability, speed);
         this.hasTruckBed = hasTruckBed;
     }
 

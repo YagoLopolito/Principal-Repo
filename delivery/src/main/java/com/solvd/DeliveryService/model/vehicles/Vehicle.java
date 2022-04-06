@@ -1,28 +1,29 @@
 package com.solvd.DeliveryService.model.vehicles;
 
-import com.solvd.DeliveryService.model.interfaces.Lights;
-import com.solvd.DeliveryService.model.interfaces.Wheels;
-import com.solvd.DeliveryService.model.interfaces.Windows;
+import com.solvd.DeliveryService.model.interface1.IMoveForware;
+import com.solvd.DeliveryService.model.interface1.IUseLights;
+import com.solvd.DeliveryService.model.interface1.IUseWindows;
 
-public abstract class Vehicle implements Wheels, Lights, Windows {
+public abstract class Vehicle implements IMoveForware, IUseLights, IUseWindows {
     private int id;
     private String brand;
     private String model;
     private int wheels;
     private int capacity;
     private double capability;
+    private int speed;
 
     public Vehicle() {
     }
 
-    public Vehicle(int id, String brand, String model, int wheels, int capacity, double capability) {
+    public Vehicle(int id, String brand, String model, int wheels, int capacity, double capability, int speed) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.wheels = wheels;
         this.capacity = capacity;
-        //this.price = price;
         this.capability = capability;
+        this.speed = speed;
     }
 
     public int getId() {
@@ -71,6 +72,14 @@ public abstract class Vehicle implements Wheels, Lights, Windows {
 
     public void setCapability(double capability) {
         this.capability = capability;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     @Override
