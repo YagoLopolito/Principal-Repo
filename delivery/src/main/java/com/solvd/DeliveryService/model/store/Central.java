@@ -3,10 +3,12 @@ package com.solvd.DeliveryService.model.store;
 import com.solvd.DeliveryService.model.exception.DriverNotFoundException;
 import com.solvd.DeliveryService.model.exception.VehicleNotFoundException;
 import com.solvd.DeliveryService.model.people.Driver;
+import com.solvd.DeliveryService.model.people.Mechanic;
 import com.solvd.DeliveryService.model.people.TrainDriver;
-import com.solvd.DeliveryService.model.vehicles.*;
+import com.solvd.DeliveryService.model.vehicle.*;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Central {
     private Garage garage;
@@ -66,6 +68,7 @@ public class Central {
         this.vehicleList.add(truck);
         this.garage.getParkedVehicles().add(truck);
     }
+
 
     public Vehicle getVehicle(int id) {
         int i = 0;

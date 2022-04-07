@@ -1,29 +1,28 @@
-package com.solvd.DeliveryService.model.vehicles;
+package com.solvd.DeliveryService.model.vehicle;
 
-public class Motorcycle extends Vehicle {
-    private boolean hasSidecar;
+public class Truck extends Vehicle {
+    private boolean hasTrailer;
 
-    public Motorcycle() {
+    public Truck() {
     }
 
-    public Motorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability, int speed) {
+    public Truck(int id, String brand, String model, boolean hasTrailer, int wheels, int capacity, double capability, int speed) {
         super(id, brand, model, wheels, capacity, capability, speed);
-        this.hasSidecar = hasSidecar;
+        this.hasTrailer = hasTrailer;
     }
 
-    public boolean getHasSidecar() {
-        return hasSidecar;
+    public boolean isHasTrailer() {
+        return hasTrailer;
     }
 
-    public void setHasSidecar(boolean hasSidecar) {
-        this.hasSidecar = hasSidecar;
+    public void setHasTrailer(boolean hasTrailer) {
+        this.hasTrailer = hasTrailer;
     }
 
     @Override
     public String toString() {
-        return "\n" + "-Motorcycle " +
-                super.toString() +
-                "Has Sidecar: " + hasSidecar +
+        return "-Truck " + super.toString() +
+                "Has trailer: " + hasTrailer +
                 "\n";
     }
 

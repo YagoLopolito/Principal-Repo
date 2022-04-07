@@ -5,6 +5,7 @@ import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
 import com.solvd.DeliveryService.model.exception.VehicleNotFoundException;
 import com.solvd.DeliveryService.model.people.Client;
 import com.solvd.DeliveryService.model.people.Employee;
+import com.solvd.DeliveryService.model.people.Mechanic;
 import com.solvd.DeliveryService.model.store.Central;
 import com.solvd.DeliveryService.model.store.Garage;
 import com.solvd.DeliveryService.model.store.Order;
@@ -21,6 +22,7 @@ public class Runner {
         Client client = new Client(20, "M", 43583051, "Yago Lopolito", order);
         Employee employee = new Employee(25, "M", 41264879, "Juan Roman Riquelme", 2000, 001, "Boss");
         Employee employee2 = new Employee(23, "M", 42164479, "Martin Palermo", 1500, 002, "Manager");
+        garage.createNewMechanic(48,"F", 12698369, "Juan Agustin Rodriguez", 300, 003, "Mechanic");
 
         Central central = new Central();
         central.createNewDriver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
@@ -40,6 +42,7 @@ public class Runner {
 
         int packageWeight = 0;
         boolean pass = false;
+
         while (pass == false) {
             log.info("Enter the package weight in kg: ");
             packageWeight = scanner.nextInt();

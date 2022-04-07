@@ -1,16 +1,29 @@
-package com.solvd.DeliveryService.model.vehicles;
+package com.solvd.DeliveryService.model.vehicle;
 
-public class SUV extends Vehicle {
-    public SUV() {
+public class Pickup extends Vehicle {
+    private boolean hasTruckBed;
+
+    public Pickup() {
     }
 
-    public SUV(int id, String brand, String model, int wheels, int capacity, double capability, int speed) {
+    public Pickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed, int speed) {
         super(id, brand, model, wheels, capacity, capability, speed);
+        this.hasTruckBed = hasTruckBed;
+    }
+
+    public boolean isHasTruckBed() {
+        return hasTruckBed;
+    }
+
+    public void setHasTruckBed(boolean hasTruckBed) {
+        this.hasTruckBed = hasTruckBed;
     }
 
     @Override
     public String toString() {
-        return "-SUV " + super.toString() + "\n";
+        return "-Pickup " + super.toString() + ", Has truck bed: " + hasTruckBed +
+                "\n" + "\n";
+
     }
 
     @Override
@@ -51,7 +64,6 @@ public class SUV extends Vehicle {
     @Override
     public void rollUp() {
 
-
     }
 
     @Override
@@ -59,3 +71,4 @@ public class SUV extends Vehicle {
 
     }
 }
+

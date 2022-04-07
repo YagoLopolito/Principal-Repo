@@ -1,4 +1,4 @@
-package com.solvd.DeliveryService.model.vehicles;
+package com.solvd.DeliveryService.model.vehicle;
 
 import com.solvd.DeliveryService.model.interface1.IMoveForware;
 import com.solvd.DeliveryService.model.interface1.IUseLights;

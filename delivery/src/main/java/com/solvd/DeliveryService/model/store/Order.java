@@ -1,7 +1,7 @@
 package com.solvd.DeliveryService.model.store;
 
 import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
-import com.solvd.DeliveryService.model.vehicles.Vehicle;
+import com.solvd.DeliveryService.model.vehicle.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,4 +1,4 @@
-package com.solvd.DeliveryService.model.vehicles;
+package com.solvd.DeliveryService.model.vehicle;
 
 public class Train extends Vehicle {
     private boolean hasWagon;
