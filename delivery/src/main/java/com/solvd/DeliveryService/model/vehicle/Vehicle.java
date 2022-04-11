@@ -4,6 +4,7 @@ import com.solvd.DeliveryService.model.interface1.IMoveForware;
 import com.solvd.DeliveryService.model.interface1.IUseLights;
 import com.solvd.DeliveryService.model.interface1.IUseWindows;
 
+
 public abstract class Vehicle implements IMoveForware, IUseLights, IUseWindows {
     private int id;
     private String brand;

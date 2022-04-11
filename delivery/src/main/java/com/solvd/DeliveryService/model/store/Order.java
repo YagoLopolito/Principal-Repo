@@ -5,6 +5,7 @@ import com.solvd.DeliveryService.model.vehicle.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 public class Order {
     private static final Logger log = LogManager.getLogger(Order.class);
     private final double PRICE_PER_KM = 0.2;

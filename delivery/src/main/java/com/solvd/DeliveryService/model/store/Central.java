@@ -3,12 +3,10 @@ package com.solvd.DeliveryService.model.store;
 import com.solvd.DeliveryService.model.exception.DriverNotFoundException;
 import com.solvd.DeliveryService.model.exception.VehicleNotFoundException;
 import com.solvd.DeliveryService.model.people.Driver;
-import com.solvd.DeliveryService.model.people.Mechanic;
 import com.solvd.DeliveryService.model.people.TrainDriver;
 import com.solvd.DeliveryService.model.vehicle.*;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class Central {
     private Garage garage;
@@ -26,6 +24,7 @@ public class Central {
         this.vehicleList = new ArrayList<Vehicle>();
         this.garage = new Garage();
         this.trainDriverList = new ArrayList<TrainDriver>();
+
     }
 
     public void createNewTrain(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers, int speed) {
@@ -127,6 +126,17 @@ public class Central {
         throw new DriverNotFoundException("That driver doesn´t exist ");
     }
 
+    public void setList() {
+        this.createNewDriver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
+        this.createNewDriver(54, "M", 30569847, "Hugo Moyano", true, 1500, 2, "Truck Driver");
+        this.createNewTrainDriver(69, "F", 25693298, "Elsa Carrio", true, 2000, 3, "Train Driver");
+        this.setGarage(garage);
+        this.createNewMotorcycle(1, "Mercedes Benz", "Chipre", 3, 2, true, 3, 150);
+        this.createNewSUV(2, "Honda", "Kizx", 4, 5, 80, 100);
+        this.createNewPickup(3, "Ford", "Carlx", 4, 5, 100, true, 200);
+        this.createNewTruck(4, "Volvo", "Liga Argentina", true, 8, 2, 1000, 130);
+        this.createNewTrain(5, "Horse", "Bala", 80, 1000, 100000, true, false, 180);
+    }
 
     public String getCountry() {
         return country;
@@ -194,4 +204,5 @@ public class Central {
 
                 ;
     }
+
 }
