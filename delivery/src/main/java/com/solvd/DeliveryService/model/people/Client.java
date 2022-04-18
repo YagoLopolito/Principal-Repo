@@ -1,5 +1,6 @@
 package com.solvd.DeliveryService.model.people;
 
+import com.solvd.DeliveryService.model.interface1.IEmployees;
 import com.solvd.DeliveryService.model.interface1.IPay;
 import com.solvd.DeliveryService.model.store.Order;
 
@@ -39,6 +40,5 @@ public class Client extends Person implements IPay {
     public void pay() {
         System.out.println("I pay: ");
     }
-
 }
 

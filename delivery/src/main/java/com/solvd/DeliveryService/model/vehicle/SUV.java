@@ -1,61 +1,37 @@
 package com.solvd.DeliveryService.model.vehicle;
 
-public class SUV extends Vehicle {
+import com.solvd.DeliveryService.model.generic.DetailsGeneric;
+import com.solvd.DeliveryService.model.enum1.Vehicles;
+import com.solvd.DeliveryService.model.interface1.IRepair;
+
+public class SUV extends Vehicle implements IRepair {
+    private DetailsGeneric<Integer, String, Double, Integer> details;
+
     public SUV() {
     }
 
-    public SUV(int id, String brand, String model, int wheels, int capacity, double capability, int speed) {
-        super(id, brand, model, wheels, capacity, capability, speed);
+    public SUV(int id, String brand, double capability, int speed) {
+        super(id, brand, capability, speed);
+
     }
 
     @Override
     public String toString() {
-        return "-SUV " + super.toString() + "\n";
+
+        return "\n"
+                + Vehicles.SUV
+                + ":"
+                + "\n"
+                + super.toString()
+                + "\n";
     }
 
     @Override
-    public void moveForward() {
+    public void setDetails(DetailsGeneric details) {
 
     }
-
     @Override
-    public void brake() {
-
-    }
-
-    @Override
-    public void turnOn() {
-
-    }
-
-    @Override
-    public void turnOff() {
-
-    }
-
-    @Override
-    public void lowBeamsHeadlights() {
-
-    }
-
-    @Override
-    public void highBeamsHeadlights() {
-
-    }
-
-    @Override
-    public void positionLights() {
-
-    }
-
-    @Override
-    public void rollUp() {
-
-
-    }
-
-    @Override
-    public void rollDown() {
-
+    public void repairable(String nameMechanic) {
+        System.out.println("Repair in the garage by: " );
     }
 }

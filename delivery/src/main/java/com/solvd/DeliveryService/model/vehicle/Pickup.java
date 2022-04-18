@@ -1,13 +1,17 @@
 package com.solvd.DeliveryService.model.vehicle;
 
-public class Pickup extends Vehicle {
+import com.solvd.DeliveryService.model.generic.DetailsGeneric;
+import com.solvd.DeliveryService.model.enum1.Vehicles;
+import com.solvd.DeliveryService.model.interface1.IRepair;
+
+public class Pickup extends Vehicle implements IRepair {
     private boolean hasTruckBed;
 
     public Pickup() {
     }
 
-    public Pickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed, int speed) {
-        super(id, brand, model, wheels, capacity, capability, speed);
+    public Pickup(int id, String brand, double capability, boolean hasTruckBed, int speed) {
+        super(id, brand, capability, speed);
         this.hasTruckBed = hasTruckBed;
     }
 
@@ -21,54 +25,24 @@ public class Pickup extends Vehicle {
 
     @Override
     public String toString() {
-        return "-Pickup " + super.toString() + ", Has truck bed: " + hasTruckBed +
-                "\n" + "\n";
+        return "\n"
+                + Vehicles.PICKUP
+                + ":"
+                + "\n"
+                + super.toString()
+                + ", Has truck bed: "
+                + hasTruckBed
+                + "\n";
 
     }
 
     @Override
-    public void moveForward() {
+    public void setDetails(DetailsGeneric details) {
 
     }
-
     @Override
-    public void brake() {
-
-    }
-
-    @Override
-    public void turnOn() {
-
-    }
-
-    @Override
-    public void turnOff() {
-
-    }
-
-    @Override
-    public void lowBeamsHeadlights() {
-
-    }
-
-    @Override
-    public void highBeamsHeadlights() {
-
-    }
-
-    @Override
-    public void positionLights() {
-
-    }
-
-    @Override
-    public void rollUp() {
-
-    }
-
-    @Override
-    public void rollDown() {
-
+    public void repairable(String nameMechanic) {
+        System.out.println("Repair in the garage: "+ nameMechanic);
     }
 }
 

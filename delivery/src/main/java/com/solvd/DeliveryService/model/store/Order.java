@@ -1,5 +1,7 @@
 package com.solvd.DeliveryService.model.store;
 
+
+import com.solvd.DeliveryService.model.enum1.Vehicles;
 import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
 import com.solvd.DeliveryService.model.vehicle.Vehicle;
 import org.apache.logging.log4j.LogManager;
@@ -8,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Order {
     private static final Logger log = LogManager.getLogger(Order.class);
-    private final double PRICE_PER_KM = 0.2;
+    public final static double PRICE_PER_KM = 0.2;
     private double distance;
     private Vehicle assignedVehicle;
 
@@ -41,6 +43,12 @@ public class Order {
         }
         return price + this.distance * PRICE_PER_KM;
 
+
+    }
+
+    public double estimatedTimeOfArrival() {
+        int speed = this.assignedVehicle.getSpeed();
+        return this.distance / speed;
     }
 
     public boolean assignDriver(Central central, int packageWeight) {
@@ -50,26 +58,37 @@ public class Order {
 
             if (packageWeight <= 3 && packageWeight > 0) {
 
-                log.info("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + central.getGarage().getParkedVehicles().get(0));
+                log.info("\nYour delivery will be handled by "
+                        + central.getDriverList().get(0).getName()
+                        + " and he will be riding a " + Vehicles.MOTORCYCLE);
+                this.assignedVehicle = central.getGarage().getParkedVehicles().get(0);
                 return true;
             } else if (packageWeight >= 3 && packageWeight <= 80) {
 
-                log.info("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + central.getGarage().getParkedVehicles().get(1));
+                log.info("\nYour delivery will be handled by "
+                        + central.getDriverList().get(0).getName()
+                        + " and he will be riding a " + Vehicles.SUV);
+                this.assignedVehicle = central.getGarage().getParkedVehicles().get(1);
                 return true;
             } else if (packageWeight > 80 && packageWeight <= 100) {
-                log.info("Your delivery will be handled by " + central.getDriverList().get(0).getName() + " and he will be riding a " + central.getGarage().getParkedVehicles().get(2));
+                log.info("\nYour delivery will be handled by "
+                        + central.getDriverList().get(0).getName()
+                        + " and he will be riding a " + Vehicles.PICKUP);
+                this.assignedVehicle = central.getGarage().getParkedVehicles().get(2);
                 return true;
             } else if (packageWeight > 100 && packageWeight <= 1000) {
 
-                log.info("Your delivery will be handled by " + central.getDriverList().get(1).getName() + " and he will be riding a " + central.getGarage().getParkedVehicles().get(3));
+                log.info("\nYour delivery will be handled by "
+                        + central.getDriverList().get(1).getName()
+                        + " and he will be riding a " + Vehicles.TRUCK);
+                this.assignedVehicle = central.getGarage().getParkedVehicles().get(3);
                 return true;
-            } else if (packageWeight > 1000 && packageWeight <= 100000) {
-                log.info("Your delivery will be handled by " + central.getTrainDriverList().get(0).getName() + " and he will be riding a " + central.getVehicleList().get(4));
-                return true;
+
             } else {
-                throw new NoCapableVehicleException("We do not have a capable vehicle");
+                throw new NoCapableVehicleException("\nWe do not have a capable vehicle");
             }
         }
+
         return false;
     }
 
@@ -95,11 +114,14 @@ public class Order {
 
     @Override
     public String toString() {
-        return
-                "Price per kilometer: $" + PRICE_PER_KM +
-                        ", Distance: " + distance + " Km" +
-                        ", Assigned vehicle: " + assignedVehicle + "\n"
-                ;
+        return "Price per kilometer: $"
+                + PRICE_PER_KM
+                + ", Distance: "
+                + distance
+                + " Km"
+                + ", Assigned vehicle: "
+                + assignedVehicle
+                + "\n";
     }
 }
 

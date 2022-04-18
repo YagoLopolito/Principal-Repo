@@ -49,9 +49,13 @@ public class Garage {
 
     @Override
     public String toString() {
-        return "Garage" +
-                " Parked Vehicles: " + parkedVehicles + "\n"
-                + "The Mechanics in the garage are: " + mechanicsList + "\n";
+        return "\n---------------------------------------------------------------------------------\n"
+                + "Garage parked vehicles:\n"
+                + parkedVehicles
+                + "\n---------------------------------------------------------------------------------\n"
+                + "The Mechanics in the garage are: "
+                + mechanicsList
+                + "\n---------------------------------------------------------------------------------\n";
 
     }
 

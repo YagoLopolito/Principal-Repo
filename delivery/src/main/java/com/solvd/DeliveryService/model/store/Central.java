@@ -3,71 +3,42 @@ package com.solvd.DeliveryService.model.store;
 import com.solvd.DeliveryService.model.exception.DriverNotFoundException;
 import com.solvd.DeliveryService.model.exception.VehicleNotFoundException;
 import com.solvd.DeliveryService.model.people.Driver;
-import com.solvd.DeliveryService.model.people.TrainDriver;
 import com.solvd.DeliveryService.model.vehicle.*;
 
 import java.util.ArrayList;
 
 public class Central {
     private Garage garage;
-    private String country;
-    private String city;
     private ArrayList<Driver> driverList;
     private ArrayList<Vehicle> vehicleList;
     private ArrayList<Order> transportsList;
-    private ArrayList<TrainDriver> trainDriverList;
-
 
     public Central() {
         this.driverList = new ArrayList<Driver>();
         this.transportsList = new ArrayList<Order>();
         this.vehicleList = new ArrayList<Vehicle>();
         this.garage = new Garage();
-        this.trainDriverList = new ArrayList<TrainDriver>();
-
     }
 
-    public void createNewTrain(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasWagon, boolean hasPassangers, int speed) {
-        Train train = new Train(id, brand, model, wheels, capacity, capability, hasWagon, hasPassangers, speed);
-        this.vehicleList.add(train);
-        this.garage.getParkedVehicles().add(train);
-    }
-
-    public void createNewDriver(int age, String sex, int document, String name, boolean hasTruckLicense, double wage, int employeeId, String position) {
-        Driver driver = new Driver(age, sex, document, name, hasTruckLicense, wage, employeeId, position);
+    public void addNewDriver(Driver driver) {
         this.driverList.add(driver);
-
     }
 
-    public void createNewTrainDriver(int age, String sex, int document, String name, boolean hasTrainLicense, double wage, int employeeId, String position) {
-        TrainDriver trainDriver = new TrainDriver(age, sex, document, name, hasTrainLicense, wage, employeeId, position);
-        this.trainDriverList.add(trainDriver);
-    }
-
-    public void createNewMotorcycle(int id, String brand, String model, int wheels, int capacity, boolean hasSidecar, double capability, int speed) {
-        Motorcycle motorcycle = new Motorcycle(id, brand, model, wheels, capacity, hasSidecar, capability, speed);
-        this.vehicleList.add(motorcycle);
-        this.garage.getParkedVehicles().add(motorcycle);
-    }
-
-    public void createNewSUV(int id, String brand, String model, int wheels, int capacity, double capability, int speed) {
-        SUV suv = new SUV(id, brand, model, wheels, capacity, capability, speed);
+    public void addNewSuv(SUV suv) {
         this.vehicleList.add(suv);
-        this.garage.getParkedVehicles().add(suv);
     }
 
-    public void createNewPickup(int id, String brand, String model, int wheels, int capacity, double capability, boolean hasTruckBed, int speed) {
-        Pickup pickup = new Pickup(id, brand, model, wheels, capacity, capability, hasTruckBed, speed);
-        this.vehicleList.add(pickup);
-        this.garage.getParkedVehicles().add(pickup);
-    }
-
-    public void createNewTruck(int id, String brand, String model, boolean hasTrailer, int wheels, int capacity, double capability, int speed) {
-        Truck truck = new Truck(id, brand, model, hasTrailer, wheels, capacity, capability, speed);
+    public void addNewTruck(Truck truck) {
         this.vehicleList.add(truck);
-        this.garage.getParkedVehicles().add(truck);
     }
 
+    public void addNewPickup(Pickup pickup) {
+        this.vehicleList.add(pickup);
+    }
+
+    public void addNewMoto(Motorcycle motorcycle) {
+        this.vehicleList.add(motorcycle);
+    }
 
     public Vehicle getVehicle(int id) {
         int i = 0;
@@ -126,34 +97,6 @@ public class Central {
         throw new DriverNotFoundException("That driver doesn´t exist ");
     }
 
-    public void setList() {
-        this.createNewDriver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
-        this.createNewDriver(54, "M", 30569847, "Hugo Moyano", true, 1500, 2, "Truck Driver");
-        this.createNewTrainDriver(69, "F", 25693298, "Elsa Carrio", true, 2000, 3, "Train Driver");
-        this.setGarage(garage);
-        this.createNewMotorcycle(1, "Mercedes Benz", "Chipre", 3, 2, true, 3, 150);
-        this.createNewSUV(2, "Honda", "Kizx", 4, 5, 80, 100);
-        this.createNewPickup(3, "Ford", "Carlx", 4, 5, 100, true, 200);
-        this.createNewTruck(4, "Volvo", "Liga Argentina", true, 8, 2, 1000, 130);
-        this.createNewTrain(5, "Horse", "Bala", 80, 1000, 100000, true, false, 180);
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public ArrayList<Driver> getDriverList() {
         return driverList;
     }
@@ -186,23 +129,17 @@ public class Central {
         this.garage = garage;
     }
 
-    public ArrayList<TrainDriver> getTrainDriverList() {
-        return trainDriverList;
-    }
-
-    public void setTrainDriverList(ArrayList<TrainDriver> trainDriverList) {
-        this.trainDriverList = trainDriverList;
-    }
-
     @Override
     public String toString() {
-        return "Vehicle in the central, " +
-                "Parked in the: " + garage +
-                ", Driver List: " + driverList +
-                ", Vehicle List: " + vehicleList +
-                ", Transports List: " + transportsList + "\n"
-
-                ;
+        return "Vehicle in the central, "
+                + "Parked in the: "
+                + garage
+                + ", Driver List: "
+                + driverList
+                + ", Vehicle List: "
+                + vehicleList
+                + ", Transports List: "
+                + transportsList
+                + "\n";
     }
-
 }
