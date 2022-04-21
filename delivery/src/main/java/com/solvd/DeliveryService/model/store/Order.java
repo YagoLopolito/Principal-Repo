@@ -46,10 +46,11 @@ public class Order {
 
     }
 
-    public double estimatedTimeOfArrival() {
+    public int estimatedTimeOfArrival() {
         int speed = this.assignedVehicle.getSpeed();
-        return this.distance / speed;
+        return (int) ((this.distance / speed)*60);
     }
+
 
     public boolean assignDriver(Central central, int packageWeight) {
         boolean pass = false;
@@ -79,7 +80,7 @@ public class Order {
             } else if (packageWeight > 100 && packageWeight <= 1000) {
 
                 log.info("\nYour delivery will be handled by "
-                        + central.getDriverList().get(1).getName()
+                        + central.getDriverList().get(0).getName()
                         + " and he will be riding a " + Vehicles.TRUCK);
                 this.assignedVehicle = central.getGarage().getParkedVehicles().get(3);
                 return true;

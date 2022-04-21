@@ -47,11 +47,14 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return
-                "Age: " + age +
-                        ", Sex: " + sex +
-                        ", Document n°: " + id +
-                        ", Name: " + name + "\n"
-                ;
+        return "Age: "
+                + age
+                + ", Sex: "
+                + sex
+                + ", Document n°: "
+                + id
+                + ", Name: "
+                + name
+                + "\n";
     }
 }

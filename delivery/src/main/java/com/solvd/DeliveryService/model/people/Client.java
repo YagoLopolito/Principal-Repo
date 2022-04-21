@@ -7,6 +7,7 @@ import com.solvd.DeliveryService.model.store.Order;
 public class Client extends Person implements IPay {
     private Order order;
     private Client client;
+    private int packageWeight;
 
     public Client(int age, String sex, int document, String name, Order order) {
         super(age, sex, document, name);
@@ -32,13 +33,13 @@ public class Client extends Person implements IPay {
 
     @Override
     public String toString() {
-        return "¡Hello " + getName() + "!" +
-                "\n";
+        return   getName()
+                + "!"
+                + "\n";
     }
-
     @Override
     public void pay() {
-        System.out.println("I pay: ");
+        System.out.println("I pay: "+ order.calculateCost(packageWeight));
     }
 }
 

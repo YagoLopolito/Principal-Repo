@@ -23,9 +23,10 @@ public class Driver extends Employee {
 
     @Override
     public String toString() {
-        return
-                "Has Truck License: " + hasTruckLicense +
-                        super.toString() + "\n";
+        return "Has Truck License: "
+                + hasTruckLicense
+                + super.toString()
+                + "\n";
     }
 }
 

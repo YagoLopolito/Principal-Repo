@@ -24,7 +24,7 @@ public class Truck extends Vehicle {
 
     @Override
     public String toString() {
-        return "\n"
+        return    "\n"
                 + Vehicles.TRUCK
                 + ":"
                 + "\n"

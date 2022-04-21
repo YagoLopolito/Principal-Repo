@@ -54,14 +54,13 @@ public abstract class Vehicle implements IDetails {
 
     @Override
     public String toString() {
-        return
-                "id n°: "
-                        + id
-                        + ", Brand: "
-                        + brand
-                        + ", Capability: "
-                        + capability
-                        + " kg";
+        return "id n°: "
+                + id
+                + ", Brand: "
+                + brand
+                + ", Capability: "
+                + capability
+                + " kg";
     }
 
     @Override
