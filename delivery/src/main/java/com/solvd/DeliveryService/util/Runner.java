@@ -20,7 +20,7 @@ public class Runner {
     private static final Logger log = LogManager.getLogger(Runner.class);
 
     public static void main(String[] args) {
-
+        System.out.println(100%20);
         Order order = new Order();
         Central central = new Central();
 
@@ -93,7 +93,7 @@ public class Runner {
                     + "Driver "
                     + driver1.getName()
                     + " wage:"
-                    + (int)(driver1.getWage()+order.calculateCost(packageWeight)%20)
+                    + (int)(driver1.getWage()+(order.calculateCost(packageWeight)*20)/100)
                     + " $"
                     +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n")
             ;
