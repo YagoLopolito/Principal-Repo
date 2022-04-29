@@ -4,9 +4,8 @@ import com.solvd.DeliveryService.model.interface1.ICashSalary;
 import com.solvd.DeliveryService.model.interface1.IEmployees;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class Employee extends Person implements IEmployees {
+public class Employee<a> extends Person implements IEmployees {
     private double wage;
     private int employeeId;
     private String position;
@@ -24,8 +23,25 @@ public class Employee extends Person implements IEmployees {
     }
 
     public double getWage() {
-        return wage;
+
+        ICashSalary a = (id) -> {
+            System.out.println(wage);
+            return wage;
+        };
+        return a.cashSalary(1);
     }
+
+        /*ICashSalary a = (id) -> {
+            Iterator<Employee> it = this.employeeList.iterator();
+            while (it.hasNext()) {
+                Employee employee = it.next();
+                System.out.println("Wage: " + employee.getWage());
+                if (employee.getEmployeeId() == employeeId) {
+                    System.out.println("Wage: " + employee.getWage());
+                }
+            }
+            return 0;
+        };*/
 
     public void setWage(double wage) {
         this.wage = wage;
@@ -55,13 +71,5 @@ public class Employee extends Person implements IEmployees {
                 + super.toString();
     }
 
-    ICashSalary a = (wage) -> {
-        Iterator<Employee> it = this.employeeList.iterator();
-        while (it.hasNext()) {
-            Employee employee = it.next();
-            if (employee.getEmployeeId() == employeeId) {
-                System.out.println("Wage: " + employee.getWage());
-            }
-        }
-    };
+
 }

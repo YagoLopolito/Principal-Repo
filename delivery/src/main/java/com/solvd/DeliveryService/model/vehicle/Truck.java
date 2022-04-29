@@ -1,7 +1,7 @@
 package com.solvd.DeliveryService.model.vehicle;
 
-import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 import com.solvd.DeliveryService.model.enum1.Vehicles;
+import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 
 public class Truck extends Vehicle {
     private boolean hasTrailer;
@@ -24,7 +24,7 @@ public class Truck extends Vehicle {
 
     @Override
     public String toString() {
-        return    "\n"
+        return "\n"
                 + Vehicles.TRUCK
                 + ":"
                 + "\n"
@@ -33,7 +33,6 @@ public class Truck extends Vehicle {
                 + hasTrailer
                 + "\n";
     }
-
 
 
     @Override

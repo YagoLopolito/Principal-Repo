@@ -1,7 +1,6 @@
 package com.solvd.DeliveryService.model.interface1;
 
 @FunctionalInterface
-public interface ICashSalary {
-
-    double cashSalary(int employeeId);
+public interface IOperate {
+    int operate(int Distance, int speed);
 }

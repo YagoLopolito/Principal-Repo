@@ -1,6 +1,5 @@
 package com.solvd.DeliveryService.model.people;
 
-import com.solvd.DeliveryService.model.interface1.IEmployees;
 import com.solvd.DeliveryService.model.interface1.IPay;
 import com.solvd.DeliveryService.model.store.Order;
 
@@ -9,9 +8,8 @@ public class Client extends Person implements IPay {
     private Client client;
     private int packageWeight;
 
-    public Client(int age, String sex, int document, String name, Order order) {
+    public Client(int age, String sex, int document, String name) {
         super(age, sex, document, name);
-        this.order = order;
     }
 
 
@@ -33,13 +31,14 @@ public class Client extends Person implements IPay {
 
     @Override
     public String toString() {
-        return   getName()
+        return getName()
                 + "!"
                 + "\n";
     }
+
     @Override
     public void pay() {
-        System.out.println("I pay: "+ order.calculateCost(packageWeight));
+        System.out.println("I pay: " + order.calculateCost(packageWeight));
     }
 }
 

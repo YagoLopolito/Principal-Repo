@@ -1,7 +1,7 @@
 package com.solvd.DeliveryService.model.vehicle;
 
-import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 import com.solvd.DeliveryService.model.enum1.Vehicles;
+import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 import com.solvd.DeliveryService.model.interface1.IRepair;
 
 public class SUV extends Vehicle implements IRepair {
@@ -30,8 +30,9 @@ public class SUV extends Vehicle implements IRepair {
     public void setDetails(DetailsGeneric details) {
 
     }
+
     @Override
     public void repairable(String nameMechanic) {
-        System.out.println("Repair in the garage by: " );
+        System.out.println("Repair in the garage by: ");
     }
 }

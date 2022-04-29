@@ -140,6 +140,7 @@ public class Central {
                 + vehicleList
                 + ", Transports List: "
                 + transportsList
-                + "\n";
+                + "\n"
+                ;
     }
 }

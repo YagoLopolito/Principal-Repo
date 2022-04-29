@@ -1,9 +1,7 @@
 package com.solvd.DeliveryService.util;
 
-import com.solvd.DeliveryService.model.generic.DetailsGeneric;
-import com.solvd.DeliveryService.model.exception.DriverNotFoundException;
 import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
-import com.solvd.DeliveryService.model.exception.VehicleNotFoundException;
+import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 import com.solvd.DeliveryService.model.people.Client;
 import com.solvd.DeliveryService.model.people.Driver;
 import com.solvd.DeliveryService.model.people.Mechanic;
@@ -26,7 +24,7 @@ public class Runner {
         Order order = new Order();
         Central central = new Central();
 
-        DetailsGeneric<Integer, String , Double, Integer> details =new DetailsGeneric<>();
+        DetailsGeneric<Integer, String, Double, Integer> details = new DetailsGeneric<>();
         details.setId(2);
         details.setBrand("Honda");
         details.setCapability(80.0);
@@ -41,7 +39,7 @@ public class Runner {
         Truck truck1 = new Truck(4, "Volvo", true, 1000, 30);
         central.addNewTruck(truck1);
 
-        Client client = new Client(20, "M", 43583051, "Yago Lopolito", order);
+        Client client = new Client(20, "M", 43583051, "Yago Lopolito");
         Mechanic mechanic1 = new Mechanic(43, "m", 1463211, "paloma", 133, 03, "Mechanic");
         Driver driver1 = new Driver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
         central.addNewDriver(driver1);
@@ -52,43 +50,55 @@ public class Runner {
         mechanic1.parkVehicle(central, motorcycle1);
         mechanic1.parkVehicle(central, pickup1);
 
-        log.info("¡Hello "+client.toString());
+
+
+        log.info("¡Hello " + client);
+
         Scanner scanner = new Scanner(System.in);
 
-        int packageWeight = 0;
-        boolean pass = false;
+        new Thread(() -> {
+            int packageWeight = 0;
+            boolean pass = false;
 
-        while (pass == false) {
+            while (pass == false) {
 
-            log.info("Enter the package weight in kg: ");
-            packageWeight = scanner.nextInt();
+                log.info("Enter the package weight in kg: ");
+                packageWeight = scanner.nextInt();
 
-            try {
-                pass = order.assignDriver(central, packageWeight);
+                try {
+                    pass = order.assignDriver(central, packageWeight);
+                } catch (NoCapableVehicleException e) {
+                    log.info(e);
+                }
             }
-            catch (NoCapableVehicleException e)
-            {
-                log.info(e);
-            }
-        }
 
-        log.info("Enter the distance to destination in km: ");
-        Scanner scanner3 = new Scanner(System.in);
+            log.info("Enter the distance to destination in km: ");
+            Scanner scanner3 = new Scanner(System.in);
 
-        order.setDistance(scanner3.nextDouble());
+            order.setDistance(scanner3.nextDouble());
 
-        log.info("\n --------------------------------------------------------------------------------------------- \n"
-                + client.toString()
-                + "The price is: $"
-                + order.calculateCost(packageWeight)
-                + "\n"
-                + "Estimated time of arrival: "
-                + order.estimatedTimeOfArrival()
-                + " Minutes."
-                + "\n ---------------------------------------------------------------------------------------------\n");
+            log.info("\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                    + client
+                    + "The price is: $"
+                    + order.calculateCost(packageWeight)
+                    + "\n"
+                    + "Estimated time of arrival: "
+                    + order.estimatedTimeOfArrival()
+                    + " Minutes."
+                    +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n")
+                    ;
 
-        log.info(central.getGarage().toString() + "\n");
-
+            log.info(central.getGarage().toString()
+                    +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                    + "Driver "
+                    + driver1.getName()
+                    + " wage:"
+                    + (int)driver1.getWage()
+                    + " $"
+                    +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n")
+            ;
+        }).start();
+     /*
         try {
             Scanner expScanner = new Scanner(System.in);
             log.info(central.searchVehicle(1).toString());
@@ -106,6 +116,7 @@ public class Runner {
         catch (DriverNotFoundException e) {
             log.info(e);
         }
+        */
     }
 }
 

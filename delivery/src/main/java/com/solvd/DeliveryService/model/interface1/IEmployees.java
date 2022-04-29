@@ -1,6 +1,8 @@
 package com.solvd.DeliveryService.model.interface1;
-import java.util.ArrayList;
+
 import com.solvd.DeliveryService.model.people.Employee;
+
+import java.util.ArrayList;
 
 public interface IEmployees {
 

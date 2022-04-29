@@ -3,6 +3,7 @@ package com.solvd.DeliveryService.model.store;
 
 import com.solvd.DeliveryService.model.enum1.Vehicles;
 import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
+import com.solvd.DeliveryService.model.interface1.IOperate;
 import com.solvd.DeliveryService.model.vehicle.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +14,7 @@ public class Order {
     public final static double PRICE_PER_KM = 0.2;
     private double distance;
     private Vehicle assignedVehicle;
+    private int price;
 
     public Order() {
     }
@@ -23,37 +25,40 @@ public class Order {
 
     public double calculateCost(int kg) {
         int weightClass = kg / 100;
-        int price;
         switch (weightClass) {
             case 0:
-                price = 10;
-                break;
-
-            case 1:
                 price = 20;
                 break;
 
-            case 2:
+            case 1:
                 price = 30;
                 break;
 
+            case 2:
+                price = 40;
+                break;
+
             default:
-                price = 60;
+                price = 70;
                 break;
         }
+
         return price + this.distance * PRICE_PER_KM;
-
-
     }
 
     public int estimatedTimeOfArrival() {
-        int speed = this.assignedVehicle.getSpeed();
-        return (int) ((this.distance / speed)*60);
+        IOperate a = ((distance, speed) -> {
+            int r = (distance / speed) * 60;
+            return r;
+        });
+        return a.operate((int) this.distance, assignedVehicle.getSpeed());
     }
-
 
     public boolean assignDriver(Central central, int packageWeight) {
         boolean pass = false;
+        new Thread(() -> {
+
+        }).start();
 
         while (pass == false) {
 
@@ -122,7 +127,8 @@ public class Order {
                 + " Km"
                 + ", Assigned vehicle: "
                 + assignedVehicle
-                + "\n";
+                + "\n"
+                ;
     }
 }
 

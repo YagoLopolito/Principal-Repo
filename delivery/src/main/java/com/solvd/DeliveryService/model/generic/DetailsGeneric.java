@@ -1,14 +1,12 @@
 package com.solvd.DeliveryService.model.generic;
 
-import java.security.PrivateKey;
-
-public class DetailsGeneric<A,B,C,D>{
+public class DetailsGeneric<A, B, C, D> {
     private A id;
     private B brand;
     private C capability;
     private D speed;
 
-    public DetailsGeneric(){
+    public DetailsGeneric() {
     }
 
     public A getId() {
