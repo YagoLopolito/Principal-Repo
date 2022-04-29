@@ -93,7 +93,7 @@ public class Runner {
                     + "Driver "
                     + driver1.getName()
                     + " wage:"
-                    + (int)driver1.getWage()
+                    + (int)(driver1.getWage()+order.calculateCost(packageWeight)%20)
                     + " $"
                     +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n")
             ;
