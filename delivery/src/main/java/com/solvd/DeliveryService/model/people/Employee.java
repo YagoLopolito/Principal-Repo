@@ -25,23 +25,10 @@ public class Employee<a> extends Person implements IEmployees {
     public double getWage() {
 
         ICashSalary a = (id) -> {
-            System.out.println(wage);
             return wage;
         };
         return a.cashSalary(1);
     }
-
-        /*ICashSalary a = (id) -> {
-            Iterator<Employee> it = this.employeeList.iterator();
-            while (it.hasNext()) {
-                Employee employee = it.next();
-                System.out.println("Wage: " + employee.getWage());
-                if (employee.getEmployeeId() == employeeId) {
-                    System.out.println("Wage: " + employee.getWage());
-                }
-            }
-            return 0;
-        };*/
 
     public void setWage(double wage) {
         this.wage = wage;
@@ -65,7 +52,7 @@ public class Employee<a> extends Person implements IEmployees {
         return "Employee "
                 + "ID: "
                 + employeeId
-                + " Wage: $"
+                + " Wage: $ "
                 + wage
                 + " "
                 + super.toString();

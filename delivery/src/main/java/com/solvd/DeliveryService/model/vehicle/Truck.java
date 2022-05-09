@@ -1,6 +1,8 @@
 package com.solvd.DeliveryService.model.vehicle;
 
-import com.solvd.DeliveryService.model.enum1.Vehicles;
+import com.solvd.DeliveryService.model.enum1.EnumColour;
+import com.solvd.DeliveryService.model.enum1.EnumTypeOfLine;
+import com.solvd.DeliveryService.model.enum1.EnumVehicles;
 import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 
 public class Truck extends Vehicle {
@@ -25,12 +27,16 @@ public class Truck extends Vehicle {
     @Override
     public String toString() {
         return "\n"
-                + Vehicles.TRUCK
+                + EnumVehicles.TRUCK.getVehicle()
                 + ":"
                 + "\n"
                 + super.toString()
                 + ", Has trailer: "
                 + hasTrailer
+                + ", Colour: "
+                + EnumColour.ORANGE.getColour()
+                + ", Range: "
+                + EnumTypeOfLine.MID_RANGE.getTypeOfLine()
                 + "\n";
     }
 

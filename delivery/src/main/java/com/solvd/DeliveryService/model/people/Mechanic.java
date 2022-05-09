@@ -1,5 +1,6 @@
 package com.solvd.DeliveryService.model.people;
 
+import com.solvd.DeliveryService.model.enum1.EnumColour;
 import com.solvd.DeliveryService.model.store.Central;
 import com.solvd.DeliveryService.model.vehicle.Vehicle;
 
@@ -15,7 +16,9 @@ public class Mechanic extends Employee {
 
     @Override
     public String toString() {
-        return "Mechanic: " + super.toString();
+        return "Mechanic: "
+                + super.toString()
+                + ", Coverall colour: "
+                + EnumColour.YELLOW.getColour();
     }
-
 }

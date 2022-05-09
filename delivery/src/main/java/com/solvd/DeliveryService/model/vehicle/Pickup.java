@@ -1,10 +1,16 @@
 package com.solvd.DeliveryService.model.vehicle;
 
-import com.solvd.DeliveryService.model.enum1.Vehicles;
+import com.solvd.DeliveryService.model.enum1.EnumColour;
+import com.solvd.DeliveryService.model.enum1.EnumTypeOfLine;
+import com.solvd.DeliveryService.model.enum1.EnumVehicles;
 import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 import com.solvd.DeliveryService.model.interface1.IRepair;
+import com.solvd.DeliveryService.util.Runner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Pickup extends Vehicle implements IRepair {
+    private static final Logger log = LogManager.getLogger(Runner.class);
     private boolean hasTruckBed;
 
     public Pickup() {
@@ -26,12 +32,14 @@ public class Pickup extends Vehicle implements IRepair {
     @Override
     public String toString() {
         return "\n"
-                + Vehicles.PICKUP
+                + EnumVehicles.PICKUP.getVehicle()
                 + ":"
                 + "\n"
                 + super.toString()
-                + ", Has truck bed: "
-                + hasTruckBed
+                + ", Colour: "
+                + EnumColour.WHITE_ICE.getColour()
+                + ", Range: "
+                + EnumTypeOfLine.TOP_OF_THE_LINE.getTypeOfLine()
                 + "\n";
 
     }
@@ -43,7 +51,7 @@ public class Pickup extends Vehicle implements IRepair {
 
     @Override
     public void repairable(String nameMechanic) {
-        System.out.println("Repair in the garage: " + nameMechanic);
+        log.info("Repair in the garage: " + nameMechanic);
     }
 }
 

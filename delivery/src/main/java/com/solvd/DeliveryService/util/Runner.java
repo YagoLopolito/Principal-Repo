@@ -2,6 +2,8 @@ package com.solvd.DeliveryService.util;
 
 import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
 import com.solvd.DeliveryService.model.generic.DetailsGeneric;
+import com.solvd.DeliveryService.model.generic.GenericClientDetails;
+import com.solvd.DeliveryService.model.generic.GenricInteger;
 import com.solvd.DeliveryService.model.people.Client;
 import com.solvd.DeliveryService.model.people.Driver;
 import com.solvd.DeliveryService.model.people.Mechanic;
@@ -20,7 +22,6 @@ public class Runner {
     private static final Logger log = LogManager.getLogger(Runner.class);
 
     public static void main(String[] args) {
-        System.out.println(100%20);
         Order order = new Order();
         Central central = new Central();
 
@@ -39,9 +40,16 @@ public class Runner {
         Truck truck1 = new Truck(4, "Volvo", true, 1000, 30);
         central.addNewTruck(truck1);
 
-        Client client = new Client(20, "M", 43583051, "Yago Lopolito");
-        Mechanic mechanic1 = new Mechanic(43, "m", 1463211, "paloma", 133, 03, "Mechanic");
-        Driver driver1 = new Driver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 500, 1, "Driver");
+        GenericClientDetails<Integer, String, Integer, String> gcd = new GenericClientDetails<>();
+        gcd.setAge(20);
+        gcd.setSex("M");
+        gcd.setDocument(43969678);
+        gcd.setName("Yago Lopolito");
+        Client client = new Client(gcd.getAge(), gcd.getSex(), gcd.getDocument(), gcd.getName());
+
+
+        Mechanic mechanic1 = new Mechanic(43, "M", 14632111, "Paloma Roncaglia", 133, 3, "Mechanic");
+        Driver driver1 = new Driver(23, "M", 42354984, "Guillermo Barros Schelotto", false, 499, 1, "Driver");
         central.addNewDriver(driver1);
 
         central.getGarage().getMechanicsList().add(mechanic1);
@@ -51,72 +59,73 @@ public class Runner {
         mechanic1.parkVehicle(central, pickup1);
 
 
-
-        log.info("¡Hello " + client);
+        log.info("\n¡Hello " + client);
 
         Scanner scanner = new Scanner(System.in);
 
         new Thread(() -> {
+
             int packageWeight = 0;
             boolean pass = false;
+            GenricInteger<Integer> gd;
 
-            while (pass == false) {
+            while (!pass) {
 
-                log.info("Enter the package weight in kg: ");
+                log.info("\nEnter the package weight in kg: ");
                 packageWeight = scanner.nextInt();
-
+                gd = new GenricInteger<>(packageWeight);
                 try {
-                    pass = order.assignDriver(central, packageWeight);
+                    pass = order.assignDriver(central, gd.getInteger());
                 } catch (NoCapableVehicleException e) {
                     log.info(e);
                 }
             }
 
-            log.info("Enter the distance to destination in km: ");
+            log.info("\nEnter the distance to destination in km: ");
             Scanner scanner3 = new Scanner(System.in);
+
+            gd = new GenricInteger<>(packageWeight);
 
             order.setDistance(scanner3.nextDouble());
 
             log.info("\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
                     + client
                     + "The price is: $"
-                    + order.calculateCost(packageWeight)
+                    + order.calculateCost(gd.getInteger())
                     + "\n"
                     + "Estimated time of arrival: "
                     + order.estimatedTimeOfArrival()
                     + " Minutes."
-                    +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n")
-                    ;
+                    + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n");
+            log.info("Pay order? 1= Yes 2= No\n");
 
-            log.info(central.getGarage().toString()
-                    +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
-                    + "Driver "
-                    + driver1.getName()
-                    + " wage:"
-                    + (int)(driver1.getWage()+(order.calculateCost(packageWeight)*20)/100)
-                    + " $"
-                    +"\n----------------------------------------------------------------------------------------------------------------------------------------------\n")
-            ;
+            Scanner scanner4 = new Scanner(System.in);
+            boolean pay = false;
+
+            while (!pay) {
+                switch (scanner4.nextInt()) {
+                    case 1:
+                        order.pay();
+                        log.info(central.getGarage().toString()
+                                + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                                + "Driver "
+                                + driver1.getName()
+                                + " wage: $ "
+                                + (driver1.getWage() + (order.calculateCost(packageWeight) * 20) / 100)
+                                + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                                + "Is paid: "
+                                + order.isPago());
+                        pay = true;
+                        break;
+                    case 2:
+                        log.info("Shipment will not be made until payment is made.\n");
+                        log.info("Pay order? 1= Yes 2= No\n");
+                        break;
+                    default:
+                        log.info("You can only use 1 and 2!\n");
+                        log.info("Pay order? 1= Yes 2= No\n");
+                }
+            }
         }).start();
-     /*
-        try {
-            Scanner expScanner = new Scanner(System.in);
-            log.info(central.searchVehicle(1).toString());
-            central.searchVehicle(26).toString();
-        }
-        catch (VehicleNotFoundException e)
-        {
-            log.info(e);
-
-        }
-        try {
-            Scanner exp2Scanner = new Scanner(System.in);
-            log.info(central.searchDriver("Minguito").toString());
-        }
-        catch (DriverNotFoundException e) {
-            log.info(e);
-        }
-        */
     }
 }
-
