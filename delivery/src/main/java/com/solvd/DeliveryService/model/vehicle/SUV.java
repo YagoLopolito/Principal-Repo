@@ -5,6 +5,7 @@ import com.solvd.DeliveryService.model.enum1.EnumTypeOfLine;
 import com.solvd.DeliveryService.model.enum1.EnumVehicles;
 import com.solvd.DeliveryService.model.generic.DetailsGeneric;
 import com.solvd.DeliveryService.model.interface1.IRepair;
+import com.solvd.DeliveryService.model.store.Garage;
 import com.solvd.DeliveryService.util.Runner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +21,8 @@ public class SUV extends Vehicle implements IRepair {
         super(id, brand, capability, speed);
 
     }
+
+    Garage garage = new Garage();
 
     @Override
     public String toString() {
@@ -42,7 +45,7 @@ public class SUV extends Vehicle implements IRepair {
     }
 
     @Override
-    public void repairable(String nameMechanic) {
-        log.info("Repair in the garage by: ");
+    public void repairable() {
+        log.info("\nThe SUV can be repaired in the garage.");
     }
 }

@@ -80,22 +80,25 @@ public class Central {
     }
 
     public Vehicle searchVehicle(int id) {
-        for (Vehicle a : this.vehicleList) {
+        vehicleList.stream().forEach(a -> {
             if (a.getId() == id) {
-                return a;
+                return;
             }
-        }
-        throw new VehicleNotFoundException("That vehicle doesn´t exist ");
+            throw new VehicleNotFoundException("That vehicle doesn´t exist ");
+        });
+        return null;
     }
 
     public Driver searchDriver(String name) {
-        for (Driver a : this.driverList) {
-            if (a.getName() == name) {
-                return a;
+        driverList.stream().forEach(d -> {
+            if (d.getName() == name) {
+                return;
             }
-        }
-        throw new DriverNotFoundException("That driver doesn´t exist ");
+            throw new DriverNotFoundException("That driver doesn´t exist ");
+        });
+        return null;
     }
+
 
     public ArrayList<Driver> getDriverList() {
         return driverList;

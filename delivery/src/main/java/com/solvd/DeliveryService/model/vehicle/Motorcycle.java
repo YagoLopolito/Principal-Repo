@@ -43,13 +43,14 @@ public class Motorcycle extends Vehicle implements IRepair {
                 + "\n";
     }
 
+
     @Override
     public void setDetails(DetailsGeneric details) {
 
     }
 
     @Override
-    public void repairable(String nameMechanic) {
-        log.info("Repair in the garage: " + nameMechanic);
+    public void repairable() {
+        log.info("\nThe motorcycle can be repaired in the garage.");
     }
 }

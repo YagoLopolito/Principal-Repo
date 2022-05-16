@@ -5,6 +5,7 @@ import com.solvd.DeliveryService.model.enum1.EnumVehicles;
 import com.solvd.DeliveryService.model.exception.NoCapableVehicleException;
 import com.solvd.DeliveryService.model.interface1.IOperate;
 import com.solvd.DeliveryService.model.interface1.IPay;
+import com.solvd.DeliveryService.model.interface1.ISplit;
 import com.solvd.DeliveryService.model.vehicle.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,12 +50,19 @@ public class Order implements IPay {
         return price + this.distance * PRICE_PER_KM;
     }
 
+    public double sas() {
+        ISplit s = ((constant, percentage) -> {
+            double a = (percentage / constant);
+            return a;
+        });
+        return s.split(100, 26);
+    }
+
     public int estimatedTimeOfArrival() {
         IOperate a = ((distance, speed) -> {
             int r = (int) (30 + (distance / speed) * 60);
             return r;
         });
-
         return a.operate(this.distance, assignedVehicle.getSpeed());
     }
 

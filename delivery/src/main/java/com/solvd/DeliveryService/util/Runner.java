@@ -74,11 +74,10 @@ public class Runner {
                 log.info("\nEnter the package weight in kg: ");
                 packageWeight = scanner.nextInt();
                 gd = new GenricInteger<>(packageWeight);
-                try {
-                    pass = order.assignDriver(central, gd.getInteger());
-                } catch (NoCapableVehicleException e) {
-                    log.info(e);
-                }
+                if (packageWeight > 1000) {
+                    throw new NoCapableVehicleException("We don´t have a capable vehicle.");
+                } else
+                    pass = order.assignDriver(central, packageWeight);
             }
 
             log.info("\nEnter the distance to destination in km: ");
@@ -102,25 +101,47 @@ public class Runner {
             Scanner scanner4 = new Scanner(System.in);
             boolean pay = false;
 
+            order.pay();
+
             while (!pay) {
                 switch (scanner4.nextInt()) {
                     case 1:
-                        order.pay();
                         log.info(central.getGarage().toString()
+                                + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                                + "The mechanic "
+                                + mechanic1.getName()
+                                + " can take care of the following vehicles. "
+                        );
+
+                        suv1.repairable();
+                        motorcycle1.repairable();
+                        pickup1.repairable();
+
+                        log.info("\nHowever, it cannot take care of the following.");
+
+                        truck1.noReparable();
+
+
+                        log.info("\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
                                 + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
                                 + "Driver "
                                 + driver1.getName()
-                                + " wage: $ "
-                                + (driver1.getWage() + (order.calculateCost(packageWeight) * 20) / 100)
+                                + " salary plus commission: $ "
+                                + (driver1.getWage() + (order.calculateCost(packageWeight) * order.sas())
                                 + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
-                                + "Is paid: "
-                                + order.isPago());
+                                + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                                + "Shipping is paid: "
+                                + order.isPago())
+                                + "\n----------------------------------------------------------------------------------------------------------------------------------------------\n"
+                        );
                         pay = true;
                         break;
+
                     case 2:
                         log.info("Shipment will not be made until payment is made.\n");
                         log.info("Pay order? 1= Yes 2= No\n");
                         break;
+
                     default:
                         log.info("You can only use 1 and 2!\n");
                         log.info("Pay order? 1= Yes 2= No\n");

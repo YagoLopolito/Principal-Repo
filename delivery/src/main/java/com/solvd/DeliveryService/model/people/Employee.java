@@ -1,11 +1,10 @@
 package com.solvd.DeliveryService.model.people;
 
 import com.solvd.DeliveryService.model.interface1.ICashSalary;
-import com.solvd.DeliveryService.model.interface1.IEmployees;
 
 import java.util.ArrayList;
 
-public class Employee<a> extends Person implements IEmployees {
+public class Employee<a> extends Person implements ICashSalary {
     private double wage;
     private int employeeId;
     private String position;
@@ -24,9 +23,7 @@ public class Employee<a> extends Person implements IEmployees {
 
     public double getWage() {
 
-        ICashSalary a = (id) -> {
-            return wage;
-        };
+        ICashSalary a = (id) -> wage;
         return a.cashSalary(1);
     }
 
@@ -43,11 +40,6 @@ public class Employee<a> extends Person implements IEmployees {
     }
 
     @Override
-    public void setEmployeeList(ArrayList<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
-
-    @Override
     public String toString() {
         return "Employee "
                 + "ID: "
@@ -59,4 +51,8 @@ public class Employee<a> extends Person implements IEmployees {
     }
 
 
+    @Override
+    public double cashSalary(int employeeId) {
+        return 0;
+    }
 }
